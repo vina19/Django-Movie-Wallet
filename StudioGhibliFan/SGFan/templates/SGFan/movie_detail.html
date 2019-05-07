@@ -1,0 +1,32 @@
+{% extends "SGFan/main.html" %}
+{% block content %}
+	<article class="media content-section">
+		<div class="media-body">
+			<div class="article-metadata">
+				<!-- Movie detail page -->
+				<h2>{{ title }}</h2>
+		      	<div>
+		      		<!-- source image from image url -->
+		      		<img src = "{{ instance.image.url }}" class = 'img-responsive' height=300 width=220>
+		  	  	</div>
+		  	  		<!-- movie description -->
+		      	<small class="text-muted">{{ instance.description }} </small>
+		    </div>
+		    <!-- director, producer, released year, and movie likes. -->
+		    <p class="article-content"> Director: {{ instance.director }} </p>
+		    <p class="article-content"> Producer: {{ instance.producer }}</p>
+		    <p class="article-content"> Released year: {{ instance.release_date }} </p>
+		    <p class="article-content"> Likes: {{ instance.likes.count }} </p>
+		</div>
+	</article>
+
+	<article class="media content-section">
+		<div class="media-body">
+			<!-- editing movie detail button -->
+			<form method='POST' action=''>{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value='Edit Movie' />
+			</form>
+		</div>
+	</article>
+{% endblock content %}
