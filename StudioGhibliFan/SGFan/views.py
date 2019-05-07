@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import SGMovies
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import SGMoviesForm
-from django.views.generic import RedirectView
+from .forms import SGMoviesForm, UserForm
+from django.views.generic import View
+from django.contrib.auth import authenticate, login
 
 # View inside the website
 # define to create movie
@@ -74,3 +75,36 @@ def movie_update(request, id=None):
 	}
 	# returning to render request, show the movie detail page, and context of title, instance, form.
 	return render(request, "SGFan/movie_detail.html", context)
+
+class UserFormView(View):
+	form_class = UserForm
+	template_name = 'SGFan/registration_form.html'
+
+	# display a blank form for the user to sign up
+	def get(self, request):
+		form = self.form_class(None)
+		return render(request, self.template_name, {'form': form})
+	
+	# process form data to the database
+	def post(self, request):
+		form = self.form_class(request.POST)
+
+		if form.is_valid():
+			user = form.save(commit=False)
+			username = form.cleaned_data['username']
+			password = form.cleaned_data['password']
+			user.set_password(password)
+			user.save()
+
+			# return user object if credentials are correct
+			user = authenticate(username=username, password=password)
+
+			if user is not None:
+				if user.is_active:
+					login(request, user)
+					return redirect('SGFan/movie_detail.html')
+
+		# if they are not login it will return to the blank form
+		return render(request, self.template_name, {'form': form})
+
+		

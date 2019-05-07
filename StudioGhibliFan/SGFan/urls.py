@@ -5,9 +5,13 @@ from .views import (
 	movie_create,
 	movie_detail,
 	movie_update,
+    UserFormView,
 	)
 
 urlpatterns = [
+    #login path
+    url(r'^register/$', UserFormView, name='register'),
+
 	# movie list path.
     url(r'^$', movie_list, name='list'),
 
