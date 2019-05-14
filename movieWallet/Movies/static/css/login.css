@@ -1,17 +1,16 @@
 @font-face {
-  font-family: 'Satisfy';
+  font-family: 'Georgia';
   font-style: normal;
   font-weight: 400;
-  src: local('Satisfy'), url(../fonts/Satisfy.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
 ::selection {
-  background: #4f5362;
+  background: #d83ad3;
   color: #fff;
 }
 ::-moz-selection {
-  background: #4f5362;
+  background: #d83ad3;
   color: #fff;
 }
 html {
@@ -50,7 +49,7 @@ a:hover {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(../../img/books.jpg);
+  background-color: #D7BDE2;
 }
 .bk-fixed {
   background-attachment: fixed;
@@ -179,7 +178,7 @@ li {
 
 .name{
 	margin-top: 10px;
-	font-family: 'Satisfy';
+	font-family: 'Georgia';
 	font-size: 18px;
 }
 .name div{
