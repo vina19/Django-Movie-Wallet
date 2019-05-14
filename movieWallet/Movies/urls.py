@@ -16,7 +16,3 @@ urlpatterns = [
     #movies/api/name=<name>
     url(r'^api/name=(?P<name>[A-Z,a-z," ",""]+|)?&y=(?P<year>[0-9]+|)$',api.API_res,name="api"),
 ]
-
-if settings.DEBUG:
-    urlpatterns+= static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
-    urlpatterns+= static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

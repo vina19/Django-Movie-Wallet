@@ -4,7 +4,6 @@
 <div style="width:100%;height:80px">
 </div>
 <div class="container-fluid">
-    <!-- Albums -->
     {% if movies %}
         {% for movie in movies %}
         {% if forloop.counter|divisibleby:'3' or forloop.counter == 1 %}
@@ -12,35 +11,30 @@
       {% endif %}
                 <div class="col-md-4" >
                     <div class="thumbnail">
-                      <a href="{% url 'Movies:detail' movie.id %}">
+                      <!-- <a href="{% url 'Movies:detail' movie.id %}">
                         {% if movie.Poster %}
                          <img src="{{ movie.Poster.url }}" class="img-responsive" style="max-height:440px">
                          {% else %}
                          <img src="../static/img/no-poster.png" class="img-responsive" style="max-height:440px">
                          {% endif %}
-                     </a>
-                        <div class="caption">
-                            <h3>{{ movie.Name }}</h3>
-                            <h4>{{ movie.Year }}</h4>
-                            <p>{{ movie.Plot_outline }}</p>
-                            <!-- View Details -->
-                            <a href="{% url 'Movies:detail' movie.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
-                            <!-- Favorite Album -->
-                            <a href="{% url 'Movies:watched' movie.id %}" class="btn btn-default btn-sm btn-favorite" role="button">
-                                <span class="glyphicon glyphicon-star{% if not movie.Watched %}-empty{% endif %}"></span>
-                            </a>
-
-                        </div>
+                      </a> -->
+                      <div class="caption">
+                          <h3>{{ movie.Name }}</h3>
+                          <h4>{{ movie.Year }}</h4>
+                          <p>{{ movie.Plot_outline }}</p>
+                          <!-- View Details -->
+                          <a href="{% url 'Movies:detail' movie.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
+                          <!-- Favorite Album -->
+                          <a href="{% url 'Movies:watched' movie.id %}" class="btn btn-default btn-sm btn-favorite" role="button">
+                            <span class="glyphicon glyphicon-star{% if not movie.Watched %}-empty{% endif %}"></span>
+                          </a>
+                      </div>
                     </div>
                 </div>
-
               {% if forloop.counter|divisibleby:'3' %}
               </div>
               {% endif %}
               {% endfor %}
               {% endif %}
             </div>
-
-
-
 {% endblock %}

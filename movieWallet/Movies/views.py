@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render,redirect,get_object_or_404
+from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
 from .models import Movie
 from bs4 import BeautifulSoup
@@ -78,7 +78,7 @@ def log_out(request):
         logout(request)
         return redirect('logged_in')
 
-def detail(request, movie_id):
+def detail(request,movie_id):
     if not request.user.is_authenticated:
         return redirect('logged_in')
     threadobj= threading.Thread(target=get_youtube_link,args=[])
@@ -116,16 +116,16 @@ def search_movie(request):
                 'movies':res,
             }
             return render(request,'main.html',context)
-        return redirect('logged_in')
+    return redirect('logged_in')
 
-def Play_movie(request, movie_id):
+def Play_movie(request,movie_id):
     if request.user.is_authenticated:
         movie=get_object_or_404(Movie,id=movie_id)
         os.system('xdg-open '+'"'+movie.Path+'"')
         return render(request,'details.html',{'movie':movie})
     return redirect('logged_in')
 
-def Watched(request, movie_id):
+def Watched(request,movie_id):
     if request.user.is_authenticated:
         movie=get_object_or_404(Movie,id=movie_id)
         if movie.Watched:
@@ -135,7 +135,7 @@ def Watched(request, movie_id):
         movie.save()
     return redirect('logged_in')
 
-def Watched_stay(request, movie_id):
+def Watched_stay(request,movie_id):
     if request.user.is_authenticated:
         movie=get_object_or_404(Movie,id=movie_id)
         if movie.Watched:
@@ -145,4 +145,3 @@ def Watched_stay(request, movie_id):
         movie.save()
         return render(request,'details.html',{'movie':movie})
     return redirect('logged_in')
-

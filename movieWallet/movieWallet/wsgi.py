@@ -1,5 +1,5 @@
 """
-WSGI config for movieWallet project.
+WSGI config for Media_Portal project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
