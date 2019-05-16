@@ -1,11 +1,11 @@
 from django.core.management.base import BaseCommand, CommandError
 from Movies.models import Movie
-
 from django.core.files.base import ContentFile
 import shelve
 import urllib
 
-
+# Creating django management base command which will populate all the
+# data file to make sure that the data is exists.
 class Command(BaseCommand):
 
     def handle(self,*arg,**options):
