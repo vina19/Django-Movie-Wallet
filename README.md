@@ -1,7 +1,6 @@
 # Movie Wallet
 
-#### A Django based Web application that allowing the user to Sign-in, Sign-up, display the movie description from Imdb, and play movie trailer from the YouTube.
-#### This project also save all those data in database.
+#### A Django based Web application that allowing the user to Sign-in, Sign-up, display the movie description from Imdb and save it in database, and play movie trailer from the YouTube.
 
 ## Sign-in Page View
 ![sign in](https://user-images.githubusercontent.com/46719712/57828101-d7f8e900-776f-11e9-92bb-6febfa6c8aa5.PNG)
