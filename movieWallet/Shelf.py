@@ -15,6 +15,7 @@ VIDEO_FORMATS=('.mp4','.avi','.mkv','.flv')
 
 access = imdb.IMDb()
 
+# Creating shelve for opening the data
 shelffile1=shelve.open('MovieData')
 shelffile2=shelve.open('Path')
 shelffile3=shelve.open('File')
@@ -71,6 +72,7 @@ def clean_name(fil,fromat):
     fil=re.sub('(\d\d\d\d)(.*)',"",fil)
     return fil.strip()
 
+# Populate the path to the files.
 def populate(path):
     for path,dirr,files in os.walk(path):
         for fil in files:
@@ -94,11 +96,8 @@ def populate(path):
     shelffile2.close()
     shelffile3.close()
 
+# Make sure that the path is there
 if len(sys.argv) < 2:
-    print ("USAGE: python Shelf.py 'Drive Path'")
-    print ("NOTE: If no path is given the whole hard drive would be scanned(Take a Lot Of Time) suggested: Specify path ")
-    print ("1.Exit and start again with Path specified")
-    print ("2.Scan the whole hard drive")
     choice=raw_input()
     if(choice=='1'):
         sys.exit()
