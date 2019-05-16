@@ -5,6 +5,7 @@ from .serializers import MovieSerializer
 from .models import Movie
 
 #/movies/api
+#Get and post the api by the name and year
 @api_view(['GET','POST'])
 def API_res(request,name,year):
     if request.method == 'GET':

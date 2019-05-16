@@ -1,53 +1,59 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
+  <!-- Page style  -->
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
   <title>{% block title %}Movie Wallet{% endblock %}</title>
+
 </head>
+
 {% load staticfiles %}
-<link rel="stylesheet" href="{% static 'css/Bootstrap.min.css' %}">
+<link rel="stylesheet" href='{% static "css/Bootstrap.min.css" %}' />
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 
 <body>
+<!-- Inside the header of the pages -->
 <div class="fix">
-<nav class="navbar navbar-inverse fix" >
-  <div class="container-fluid" >
-
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="{% url 'logged_in' %}">Movie Wallet</a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="topNavBar">
-      <ul class="nav navbar-nav">
-        <li class="active">
-          <a href="{% url 'logged_in' %}">
-            &nbsp;
-            Movies
-          </a>
-        </li>
-      </ul>
-
-    <form class="navbar-form navbar-right" action="{% url 'search' %}" method="post" role="search">
-      {% csrf_token %}
-      <div class="form-group">
-        <input type="text" class="form-control" name="search" placeholder="Search">
+  <nav class="navbar navbar-inverse fix" >
+    <div class="container-fluid" >
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- Movie wallet logo that go to the movie list -->
+        <a class="navbar-brand" href="{% url 'logged_in' %}">Movie Wallet</a>
       </div>
-    </form>
 
-    <ul class="nav navbar-nav navbar-right">
-      <li class="">
-        <a href="{% url 'log_out' %}">
-          &nbsp;
-          Logout
-        </a>
-      </li>
-    </ul>
+      <!-- Movie button option that go to the movie list -->
+      <div class="collapse navbar-collapse" id="topNavBar">
+        <ul class="nav navbar-nav">
+          <li class="active">
+            <a href="{% url 'logged_in' %}">
+              &nbsp;
+              Movies
+            </a>
+          </li>
+        </ul>
 
+        <!-- Search bar -->
+        <form class="navbar-form navbar-right" action="{% url 'search' %}" method="post" role="search">
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="text" class="form-control" name="search" placeholder="Search">
+          </div>
+        </form>
+
+        <!-- Logout button -->
+        <ul class="nav navbar-nav navbar-right">
+          <li class="">
+            <a href="{% url 'log_out' %}">
+            &nbsp;
+            Logout
+            </a>
+          </li>
+        </ul>
     </div>
   </div>
 </nav>
@@ -55,8 +61,8 @@
 {% block body %}
 {% endblock %}
 </body>
-<script src="{% static 'js/jquery.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
 {% block script %}
 {% endblock %}
 </html>

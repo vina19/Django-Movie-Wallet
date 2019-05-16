@@ -1,7 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" class="no-js">
-
 <head>
+	<!-- Style for the header -->
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
@@ -10,51 +10,55 @@
 
 	<title>Movie Wallet-Sign Up</title>
 
+	<!-- Style for the page -->
 	{% load staticfiles %}
 	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" />
 </head>
 <body>
-	<div class="login-page bk-img" style="background-image: url({% static 'img/login.jpg' %});">
-		<div class="form-content">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3">
-						<h1 class="text-center text-bold mt-4x">Sign Up</h1>
-						<div class="well row pt-2x pb-3x bk-light">
-							<div class="col-md-8 col-md-offset-2">
-								{% if error_message %}
-								{{ error_message }}
-								{% endif %}
-								<form action="{% url 'register' %}" class="mt" method="post">
-                                    {% csrf_token %}
-									<label for="username" class="text-uppercase text-sm">Username</label>
-									<input type="text" placeholder="Username" class="form-control mb" name="username">
+<div class="form-content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h1 class="text-center text-bold mt-4x">Sign Up</h1>
+				<div class="well row pt-2x pb-3x bk-light">
+					<div class="col-md-8 col-md-offset-2">
+						<!-- Where the error message will show -->
+						{% if error_message %}
+						{{ error_message }}
+						{% endif %}
+						<!-- Create a form from register URL which post the user data -->
+						<form action="{% url 'register' %}" class="mt" method="post">
+                            {% csrf_token %}
+                            <!-- Where the user input their information to register -->
+	  				        <label for="username" class="text-uppercase text-sm">Username</label>
+							<input type="text" placeholder="Username" class="form-control mb" name="username">
 
-									<label for="email" class="text-uppercase text-sm">E-mail</label>
-									<input type="text" placeholder="E-mail" class="form-control mb" name="email">
+							<label for="email" class="text-uppercase text-sm">E-mail</label>
+							<input type="text" placeholder="E-mail" class="form-control mb" name="email">
 
-                                    <label for="password" class="text-uppercase text-sm">Password</label>
-									<input type="password" placeholder="Password" class="form-control mb" name="password">
+                            <label for="password" class="text-uppercase text-sm">Password</label>
+						    <input type="password" placeholder="Password" class="form-control mb" name="password">
 
-                                    <label for="password" class="text-uppercase text-sm">Password</label>
-									<input type="password" placeholder="Password" class="form-control mb" name="rep_password">
+                            <label for="password" class="text-uppercase text-sm">Password</label>							    
+                            <input type="password" placeholder="Password" class="form-control mb" name="rep_password">
 
-									<button class="btn btn-primary btn-block" type="submit">Sign Up</button>
-								</form>
-							</div>
-						</div>
+							<button class="btn btn-primary btn-block" type="submit">Create an account</button>
+						</form>
+						<br>	
+						<a href="{% url 'logged_in' %}"><button class="btn btn-primary btn-block" type="submit">Sign in</button></a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- Loading Scripts -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script src="{% static 'js/main.js' %}"></script>
+</div>
+
+<!-- Loading Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
 
 </body>
-
 </html>

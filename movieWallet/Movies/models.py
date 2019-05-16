@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
-
 from django.db import models
 import shelve
 
+# Create Movie database class to hold all the movie data.
 class Movie(models.Model):
     Name=models.CharField(max_length=300)
     Year=models.CharField(max_length=5)

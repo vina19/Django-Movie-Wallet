@@ -11,13 +11,13 @@ urlpatterns = [
     url(r'^movies/',include('Movies.urls')),
 
     #register/
-    url(r'^register/$',views.register,name="register"),
+    url(r'^register/$', views.register, name='register'),
     #logged_in/
-    url(r'^logged_in/$',views.logged_in,name="logged_in"),
-
-    url(r'^logged_out/$',views.log_out,name="log_out"),
-
-    url(r'^search/$',views.search_movie,name="search"),
+    url(r'^logged_in/$', views.logged_in, name='logged_in'),
+    #logged_out/
+    url(r'^logged_out/$', views.log_out, name='log_out'),
+    #search/ 
+    url(r'^search/$', views.search_movie, name='search'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

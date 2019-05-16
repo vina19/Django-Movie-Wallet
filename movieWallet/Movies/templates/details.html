@@ -1,23 +1,28 @@
 {% extends 'base.html' %}
 {% block title %}{{ movie.Name }}{% endblock %}
 {% block body %}
+<!-- Detail page style -->
 <div class="container-fluid songs-container">
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-body">
                 <br>
                 <br>
+                <!-- Display the movie name and year as title -->
                 <h2>{{ movie.Name }} <small>{{ movie.Year }}</small></h2>
                 <ul class="nav nav-pills" style="margin-bottom: 10px;">
-                <li role="presentation" class="active"><a href="{% url 'Movies:watched_stay' movie.id %}">
+                <!-- Marked watch and unwatched movie -->
+                <li role="presentation" class="active"><a href="{% url 'Movies:watched' movie.id %}">
                   {% if movie.Watched %}
                   Mark Unwatched
                   {% else %}
                   Mark Watched
                   {% endif %}
                 </a></li>
+                <!-- Back button to go back to the movie lists -->
                 <li role="presentation" class="active"><a href="{% url 'index' %}">Back</a></li>
                 </ul>
+                <!-- Movie descriptions -->
                 <h5><strong>Director</strong> : {{ movie.Director }}</h5>
                 <h5><strong>Watched</strong> :{% if movie.Watched %}Yes{% else %}No{% endif %}</h5>
                 <h5><strong>Year</strong> : {{ movie.Year }}</h5>
@@ -25,6 +30,7 @@
                 <h5><strong>Genre</strong> : {{ movie.Genre }}</h5>
                 <h5><strong>Plot:</strong></h5>
                 <p>{{ movie.Plot }}</p>
+                <!-- if the movie has a movie trailer than show the movie trailer or else show loading gif -->
                 {% if movie.trailer %}
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embeded-responsive-item" src="{{movie.trailer}}" frameborder="0" allowfullscreen></iframe>
